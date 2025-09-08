@@ -1,5 +1,7 @@
 module "regions" {
-  source   = "../.."
+  source  = "cloudnationhq/locations/azure"
+  version = "~> 1.0"
+
   location = "westeurope"
 }
 
