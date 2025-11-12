@@ -1,4 +1,4 @@
 variable "location" {
-  description = "(Required) The location/region name or displayName to get information."
-  type        = string
+  description = "(Required) Map of locations where keys are custom identifiers and values are location/region names or displayNames."
+  type        = map(string)
 }
