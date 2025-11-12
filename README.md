@@ -29,9 +29,9 @@ The following input variables are required:
 
 ### <a name="input_location"></a> [location](#input\_location)
 
-Description: (Required) The location/region name or displayName to get information.
+Description: (Required) Map of locations where keys are custom identifiers and values are location/region names or displayNames.
 
-Type: `string`
+Type: `map(string)`
 
 ## Optional Inputs
 
@@ -41,29 +41,9 @@ No optional inputs.
 
 The following outputs are exported:
 
-### <a name="output_display_name"></a> [display\_name](#output\_display\_name)
-
-Description: Display name of the location. Return 'none' if location is not found.
-
 ### <a name="output_location"></a> [location](#output\_location)
 
-Description: Map of information for the location. Return 'none' if location is not found.
-
-### <a name="output_name"></a> [name](#output\_name)
-
-Description: Standard name of the location. Return 'none' if location is not found.
-
-### <a name="output_paired_region_name"></a> [paired\_region\_name](#output\_paired\_region\_name)
-
-Description: Paired region name of the location. Return 'none' if location is not found and null if there is no paired region name for this location.
-
-### <a name="output_regional_display_name"></a> [regional\_display\_name](#output\_regional\_display\_name)
-
-Description: Regional display name of the location. Return 'none' if location is not found.
-
-### <a name="output_short_name"></a> [short\_name](#output\_short\_name)
-
-Description: Short name of the location. Return 'none' if location is not found and null if there is no short name for this location.
+Description: Map of location information. Keys match the input map keys, values contain name, display\_name, short\_name, regional\_display\_name, and paired\_region\_name.
 <!-- END_TF_DOCS -->
 
 ## Goals

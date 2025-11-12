@@ -2,35 +2,34 @@ module "regions" {
   source  = "cloudnationhq/locations/azure"
   version = "~> 1.0"
 
-  location = "westeurope"
+  location = {
+    primary   = "westeurope"
+    secondary = "North Europe"
+    backup    = "eastus"
+  }
 }
 
-output "region_info" {
-  description = "Complete region information"
+output "all_locations" {
+  description = "Complete information for all locations"
   value       = module.regions.location
 }
 
-output "standard_name" {
-  description = "Standard Azure region name"
-  value       = module.regions.name
+output "primary_name" {
+  description = "Standard Azure region name for primary location"
+  value       = module.regions.location.primary.name
 }
 
-output "display_name" {
-  description = "Human-readable region name"
-  value       = module.regions.display_name
+output "primary_display_name" {
+  description = "Human-readable region name for primary location"
+  value       = module.regions.location.primary.display_name
 }
 
-output "short_name" {
-  description = "Abbreviated region name"
-  value       = module.regions.short_name
+output "secondary_short_name" {
+  description = "Abbreviated region name for secondary location"
+  value       = module.regions.location.secondary.short_name
 }
 
-output "regional_display_name" {
-  description = "Regional display name with geographical context"
-  value       = module.regions.regional_display_name
-}
-
-output "paired_region" {
-  description = "Azure paired region name"
-  value       = module.regions.paired_region_name
+output "backup_paired_region" {
+  description = "Azure paired region name for backup location"
+  value       = module.regions.location.backup.paired_region_name
 }

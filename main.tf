@@ -21,10 +21,16 @@ locals {
     }
   }
 
-  lookup_name         = lookup(local.locations_name, var.location, null)
-  lookup_display_name = lookup(local.locations_display_name, var.location, null)
-  location = try(coalesce(
-    local.lookup_name,
-    local.lookup_display_name
-  ), "none")
+  location = {
+    for key, loc in var.location : key => try(coalesce(
+      lookup(local.locations_name, loc, null),
+      lookup(local.locations_display_name, loc, null)
+      ), {
+      name                  = "none"
+      display_name          = "none"
+      short_name            = "none"
+      regional_display_name = "none"
+      paired_region_name    = "none"
+    })
+  }
 }

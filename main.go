@@ -80,7 +80,7 @@ func (h *YAMLHandler) WriteLocations(filename string, data LocationData) error {
 		return fmt.Errorf("failed to marshal YAML: %w", err)
 	}
 
-	if err := os.WriteFile(filename, yamlData, 0644); err != nil {
+	if err := os.WriteFile(filename, yamlData, 0o644); err != nil {
 		return fmt.Errorf("failed to write %s: %w", filename, err)
 	}
 
